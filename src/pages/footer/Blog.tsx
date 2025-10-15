@@ -21,7 +21,7 @@ export default function Blog() {
     const fetchTopAnime = async () => {
       setLoading(true);
       try {
-        const res = await fetch("https://api.jikan.moe/v4/top/anime?limit=15");
+        const res = await fetch("https://api.jikan.moe/v4/top/anime?limit=20");
         if (!res.ok) throw new Error("Gagal memuat data anime.");
         const data = await res.json();
 
@@ -46,8 +46,8 @@ export default function Blog() {
   if (loading) return <Loading />;
 
   const highlight = articles[0];
-  const sideNews = articles.slice(1, 4);
-  const rest = articles.slice(4);
+  const sideNews = articles.slice(1, 6); // 5 item kanan
+  const rest = articles.slice(6, 15); // 9 item bawah
 
   return (
     <div className="bg-gradient-to-b from-zinc-900 to-zinc-950 min-h-screen text-white pb-20 px-6 md:px-16">
@@ -67,15 +67,15 @@ export default function Blog() {
       </div>
 
       {/* ✨ Highlight + Side News */}
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-3 gap-8 items-start">
         {/* Highlight utama */}
         {highlight && (
-          <div className="group md:col-span-2 bg-zinc-800/40 rounded-2xl overflow-hidden border border-zinc-700 hover:border-green-500 hover:shadow-[0_0_20px_rgba(16,185,129,0.3)] transition duration-300 hover:-translate-y-1 hover:scale-[1.01]">
-            <div className="overflow-hidden">
+          <div className="group md:col-span-2 bg-zinc-800/40 rounded-2xl overflow-hidden border border-zinc-700 hover:border-green-500 hover:shadow-[0_0_25px_rgba(16,185,129,0.3)] transition duration-300 hover:-translate-y-1">
+            <div className="overflow-hidden h-[430px]">
               <img
                 src={highlight.image_url}
                 alt={highlight.title}
-                className="w-full h-80 object-cover transition duration-500 group-hover:scale-105 group-hover:blur-[1px]"
+                className="w-full h-full object-cover transition duration-500 group-hover:scale-105 group-hover:blur-[1px]"
               />
             </div>
             <div className="p-6">
@@ -97,7 +97,7 @@ export default function Blog() {
         )}
 
         {/* Side list */}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 h-[650px] justify-between">
           {sideNews.map((item) => (
             <div
               key={item.mal_id}
@@ -110,14 +110,19 @@ export default function Blog() {
                   className="w-24 h-24 object-cover rounded-lg transition duration-500 group-hover:scale-110"
                 />
               </div>
-              <div>
-                <h3 className="font-semibold text-sm line-clamp-2 mb-1 group-hover:text-green-400 transition">
-                  {item.title}
-                </h3>
-                <p className="text-xs text-gray-400">{item.date}</p>
+
+              <div className="flex flex-col justify-between flex-1 mt-2">
+                <div>
+                  <h3 className="font-semibold text-sm line-clamp-2 mb-1 group-hover:text-green-400 transition">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-gray-400">{item.date}</p>
+                </div>
+
+                {/* Tombol seragam full width */}
                 <Link
                   to={`/blog/${item.mal_id}`}
-                  className="inline-block text-xs font-semibold bg-gradient-to-br from-green-400 to-emerald-700 px-2 py-1 rounded-lg transition mt-3 hover:from-green-500 hover:to-emerald-800"
+                  className="w-20 mb-2 text-center text-xs font-semibold bg-gradient-to-br from-green-400 to-emerald-700 hover:from-green-500 hover:to-emerald-800 py-2 mt-2 rounded-lg transition"
                 >
                   Read More
                 </Link>
@@ -150,12 +155,10 @@ export default function Blog() {
               <div className="p-5 flex flex-col justify-between h-56">
                 <div>
                   <h4
-                    className="font-semibold text-lg mb-1 text-white group-hover:text-green-400 transition"
-                    title={article.title} // tampilkan judul lengkap saat hover
+                    className="font-semibold text-lg mb-1 text-white group-hover:text-green-400 transition line-clamp-2"
+                    title={article.title}
                   >
-                    {article.title.length > 70
-                      ? article.title.slice(0, 70) + "..."
-                      : article.title}
+                    {article.title}
                   </h4>
                   <p className="text-xs text-gray-400 mb-2">{article.date}</p>
                   <p className="text-sm text-gray-400 line-clamp-3 group-hover:text-gray-300">
