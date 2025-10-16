@@ -46,18 +46,18 @@ export default function Blog() {
   if (loading) return <Loading />;
 
   const highlight = articles[0];
-  const sideNews = articles.slice(1, 6); // 5 item kanan
-  const rest = articles.slice(6, 15); // 9 item bawah
+  const sideNews = articles.slice(1, 6);
+  const rest = articles.slice(6, 15);
 
   return (
-    <div className="bg-gradient-to-b from-zinc-900 to-zinc-950 min-h-screen text-white pb-20 px-6 md:px-16">
+    <div className="bg-zinc-900 min-h-screen text-white pb-20 px-6 md:px-16">
       {toast && (
         <Toast message={toast} type="danger" onClose={() => setToast(null)} />
       )}
 
       {/* 🟢 Header */}
       <div className="text-center pt-20 mb-14">
-        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-br from-green-300 to-emerald-700 bg-clip-text text-transparent mb-2">
+        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-br from-green-300 to-emerald-700 bg-clip-text text-transparent mt-3 mb-2">
           Blog & News
         </h1>
         <div className="w-24 h-1 bg-yellow-400/80 mx-auto rounded-full shadow-lg shadow-green-500/40 mb-5"></div>
@@ -75,15 +75,15 @@ export default function Blog() {
               <img
                 src={highlight.image_url}
                 alt={highlight.title}
-                className="w-full h-full object-cover transition duration-500 group-hover:scale-105 group-hover:blur-[1px]"
+                className="w-full h-full object-cover transition duration-500 group-hover:scale-105 group-hover:blur-[1px] brightness-90"
               />
             </div>
             <div className="p-6">
               <h2 className="text-2xl font-bold mb-2 group-hover:text-green-400 transition">
                 {highlight.title}
               </h2>
-              <p className="text-sm text-gray-400 mb-3">{highlight.date}</p>
-              <p className="text-gray-300 line-clamp-4 mb-4">
+              <p className="text-sm text-gray-400 group-hover:text-gray-300 mb-3">{highlight.date}</p>
+              <p className="text-gray-400 group-hover:text-gray-200 line-clamp-4 mb-4">
                 {highlight.synopsis}
               </p>
               <Link
@@ -116,7 +116,7 @@ export default function Blog() {
                   <h3 className="font-semibold text-sm line-clamp-2 mb-1 group-hover:text-green-400 transition">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-gray-400">{item.date}</p>
+                  <p className="text-xs text-gray-400 group-hover:text-gray-300">{item.date}</p>
                 </div>
 
                 {/* Tombol seragam full width */}
