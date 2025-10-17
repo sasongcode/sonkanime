@@ -16,7 +16,7 @@ export default function Navbar() {
   }, []);
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
-    `block px-3 py-2 rounded-md hover:text-amber-300 hover:underline hover:scale-[0.93] transition ${
+    `block px-3 py-2 rounded-md hover:text-amber-300 hover:underline transition ${
       isActive ? "text-amber-300 font-bold" : ""
     }`;
 
