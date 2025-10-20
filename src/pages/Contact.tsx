@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Toast from "../components/Toast";
-import ScrollToTopButton from "../components/common/ScrollToTop";
 import { contactCards, socialMediaLinks } from "../data/Contact";
 import { Send, Share2 } from "lucide-react";
 
@@ -179,7 +178,6 @@ export default function Contact() {
         </div>
       </div>
 
-      <ScrollToTopButton />
     </div>
   );
 }

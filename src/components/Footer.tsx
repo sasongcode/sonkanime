@@ -112,7 +112,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                to="/privacy"
+                to="/terms"
                 className="relative text-gray-200 hover:text-yellow-400 transition-colors
                     after:content-[''] after:absolute after:left-2 after:-bottom-1 
                     after:h-[2px] after:w-0 after:bg-yellow-400 

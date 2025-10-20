@@ -17,7 +17,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 
-import ScrollToTopButton from "../components/common/ScrollToTop";
 import HomeCard from "../components/home/HomeCard";
 import Loading from "../components/common/Loading";
 import { handleFetchError } from "../utils/fetchError";
@@ -305,8 +304,6 @@ export default function Home() {
             </Link>
           </div>
         </div>
-
-        <ScrollToTopButton />
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-// src/components/common/ScrollToTopButton.tsx
 import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
 

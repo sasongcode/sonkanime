@@ -3,7 +3,7 @@ import { AlertCircle } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <div className="bg-gradient-to-br text-sm from-zinc-900 via-zinc-800 to-zinc-900 min-h-screen flex flex-col items-center justify-center text-center px-6">
+    <div className="bg-zinc-900 min-h-screen flex flex-col items-center justify-center text-center px-6">
       
       {/* Icon */}
       <AlertCircle className="text-red-600 w-16 h-16 animate-bounce" />

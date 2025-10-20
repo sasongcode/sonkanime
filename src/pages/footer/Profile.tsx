@@ -31,7 +31,7 @@ export default function Profile() {
           <img
             src="/saya.jpg"
             alt="Profile"
-            className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-sky-500 shadow-lg shadow-sky-500/40 transition-transform duration-300 hover:scale-105"
+            className="relative w-64 h-64 md:w-100 md:h-100 rounded-full object-cover border-4 border-sky-500 shadow-lg shadow-sky-500/40 transition-transform duration-300 hover:scale-105"
           />
         </motion.div>
 
@@ -42,8 +42,8 @@ export default function Profile() {
           transition={{ duration: 0.9, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-sky-400 mb-4">
-            👋 Hi, I’m <span className="text-white">Sasongko</span>
+          <h2 className="text-2xl md:text-3xl font-bold text-zinc-300 mb-4">
+            👋 Hi, I’m <span className="text-sky-400">Ahmad Damar Sasongko</span>
           </h2>
 
           <p className="text-gray-300 mb-7 leading-relaxed text-justify">
@@ -59,7 +59,7 @@ export default function Profile() {
           </p>
 
           {/* Info Pribadi */}
-            <div className="mb-1 text-sky-700 font-semibold grid sm:grid-cols-2 gap-x-8 gap-y-2">
+            <div className="mb-1 text-sky-500 font-semibold grid sm:grid-cols-2 gap-x-8 gap-y-2">
               <h1>Biodata Saya :</h1>
             </div>
           <div className="grid sm:grid-cols-2 gap-x-8 gap-y-2 text-gray-300 mb-10">
@@ -113,19 +113,19 @@ export default function Profile() {
           >
             <Social
               href="https://www.instagram.com/abcdmrzo"
-              gradient="from-pink-400 via-fuchsia-600 to-fuchsia-800"
+              gradient="border-2 border-white hover:bg-fuchsia-400 hover:to-fuchsia-800"
               icon={<Instagram size={18} />}
               label="Instagram"
             />
             <Social
               href="https://www.youtube.com/@abcdmrzo"
-              gradient="from-red-400 via-rose-600 to-rose-800"
+              gradient="border border-2 hover:from-red-400 hover:to-rose-800"
               icon={<Youtube size={18} />}
               label="YouTube"
             />
             <Social
               href="https://github.com/sasongcode"
-              gradient="from-zinc-500 via-zinc-700 to-zinc-800"
+              gradient="border border-2 hover:from-zinc-400 hover:to-zinc-800"
               icon={<Github size={18} />}
               label="GitHub"
             />

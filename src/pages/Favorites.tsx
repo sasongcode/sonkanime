@@ -4,7 +4,6 @@ import { Search } from "lucide-react";
 import Toast from "../components/Toast";
 import AnimeCard from "../components/anime/AnimeCard";
 import type { Anime } from "../components/anime/AnimeCard";
-import ScrollToTopButton from "../components/common/ScrollToTop";
 import Pagination from "../components/common/Pagination";
 
 export default function Favorites() {
@@ -15,7 +14,7 @@ export default function Favorites() {
   } | null>(null);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
-  
+
   // Scroll otomatis ke atas setiap kali ganti halaman
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -115,7 +114,6 @@ export default function Favorites() {
         />
       )}
 
-      <ScrollToTopButton />
     </div>
   );
 }

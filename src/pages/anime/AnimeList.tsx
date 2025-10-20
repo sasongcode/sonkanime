@@ -1,7 +1,6 @@
 import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import ScrollToTopButton from "../../components/common/ScrollToTop";
 import AnimeCard from "../../components/anime/AnimeCard";
 import GenreDropdown from "../../components/anime/GenreDropdown";
 import Pagination from "../../components/common/Pagination";
@@ -233,7 +232,6 @@ export default function AnimeList() {
             }}
           />
 
-          <ScrollToTopButton />
         </div>
       </div>
     </div>

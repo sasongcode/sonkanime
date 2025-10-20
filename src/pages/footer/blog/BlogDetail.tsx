@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import ScrollToTopButton from "../../components/common/ScrollToTop";
-import Loading from "../../components/common/Loading";
+import Loading from "../../../components/common/Loading";
+import { ArrowLeft } from "lucide-react";
 
 interface NewsItem {
   mal_id: number;
@@ -70,11 +70,12 @@ export default function BlogDetail() {
           to="/blog"
           className="inline-flex items-center gap-2 text-green-400 border border-green-600 hover:bg-green-600 hover:text-white px-4 py-2 rounded-lg font-semibold mb-6 transition-all duration-300 hover:scale-95"
         >
-          ← Back to Blog
+          <ArrowLeft size={16} />
+          Back to Blog
         </Link>
 
         {/* Title */}
-        <h1 className="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600 mb-4 drop-shadow-md">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600 py-1 mb-4 drop-shadow-md">
           {news.title}
         </h1>
 
@@ -107,10 +108,10 @@ export default function BlogDetail() {
         )}
 
         {/* Anime Title */}
-        <h2 className="text-2xl font-bold text-green-400 text-center mb-2">
+        <h2 className="text-2xl font-bold text-green-500 text-center mb-2">
           {anime.title}
         </h2>
-        <p className="text-gray-400 text-center mb-8 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-gray-400 mb-8 max-w-5xl mx-auto leading-relaxed text-left">
           {anime.synopsis || "Tidak ada deskripsi untuk anime ini."}
         </p>
 
@@ -132,7 +133,6 @@ export default function BlogDetail() {
         </div>
       </div>
 
-      <ScrollToTopButton />
     </div>
   );
 }

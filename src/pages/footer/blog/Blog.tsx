@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Toast from "../../components/Toast";
-import Loading from "../../components/common/Loading";
-import ScrollToTopButton from "../../components/common/ScrollToTop";
+import Toast from "../../../components/Toast";
+import Loading from "../../../components/common/Loading";
+import { ArrowRight } from "lucide-react";
 
 interface BlogArticle {
   mal_id: number;
@@ -90,7 +90,8 @@ export default function Blog() {
                 to={`/blog/${highlight.mal_id}`}
                 className="inline-block bg-gradient-to-br from-green-400 to-emerald-700 hover:from-green-600 hover:to-emerald-800 px-4 py-2 rounded-lg text-sm font-semibold transition"
               >
-                Baca Selengkapnya →
+                Baca Selengkapnya
+                <ArrowRight size={16} className="inline align-middle ml-2" />
               </Link>
             </div>
           </div>
@@ -168,9 +169,10 @@ export default function Blog() {
 
                 <Link
                   to={`/blog/${article.mal_id}`}
-                  className="mt-4 text-sm text-center font-semibold bg-gradient-to-br from-green-400 to-emerald-700 hover:from-green-500 hover:to-emerald-800 rounded-md py-2 transition"
+                  className="flex justify-center gap-2 mt-4 text-sm text-center font-semibold bg-gradient-to-br from-green-400 to-emerald-700 hover:from-green-500 hover:to-emerald-800 rounded-md py-2 transition"
                 >
-                  Read More →
+                  Read More
+                  <ArrowRight size={16} className="mt-1" />
                 </Link>
               </div>
             </div>
@@ -178,7 +180,6 @@ export default function Blog() {
         </div>
       </div>
 
-      <ScrollToTopButton />
     </div>
   );
 }
