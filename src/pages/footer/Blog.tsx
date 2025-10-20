@@ -55,9 +55,9 @@ export default function Blog() {
         <Toast message={toast} type="danger" onClose={() => setToast(null)} />
       )}
 
-      {/* 🟢 Header */}
+      {/* Header */}
       <div className="text-center pt-20 mb-14">
-        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-br from-green-300 to-emerald-700 bg-clip-text text-transparent mt-3 mb-2">
+        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-br from-green-300 to-emerald-700 bg-clip-text text-transparent py-1 mt-3 mb-2">
           Blog & News
         </h1>
         <div className="w-24 h-1 bg-yellow-400/80 mx-auto rounded-full shadow-lg shadow-green-500/40 mb-5"></div>
@@ -66,7 +66,7 @@ export default function Blog() {
         </p>
       </div>
 
-      {/* ✨ Highlight + Side News */}
+      {/* Highlight + Side News */}
       <div className="grid md:grid-cols-3 gap-8 items-start">
         {/* Highlight utama */}
         {highlight && (
@@ -119,10 +119,10 @@ export default function Blog() {
                   <p className="text-xs text-gray-400 group-hover:text-gray-300">{item.date}</p>
                 </div>
 
-                {/* Tombol seragam full width */}
+                {/* Button */}
                 <Link
                   to={`/blog/${item.mal_id}`}
-                  className="w-20 mb-2 text-center text-xs font-semibold bg-gradient-to-br from-green-400 to-emerald-700 hover:from-green-500 hover:to-emerald-800 py-2 mt-2 rounded-lg transition"
+                  className="w-20 mb-2 text-center text-xs font-semibold border border-white group-hover:border-green-500 group-hover:text-green-500 hover:bg-gradient-to-br hover:from-green-400 to-emerald-700 hover:text-white hover:border-emerald-700 py-2 mt-2 rounded-lg transition"
                 >
                   Read More
                 </Link>
@@ -132,7 +132,7 @@ export default function Blog() {
         </div>
       </div>
 
-      {/* 🧩 Grid berita lainnya */}
+      {/* Berita lainnya */}
       <div className="mt-14">
         <h3 className="text-2xl font-bold mb-6 border-l-4 border-green-500 pl-3">
           Berita Lainnya

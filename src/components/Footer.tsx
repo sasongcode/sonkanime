@@ -6,7 +6,7 @@ import {
   Mail,
   Phone,
   HeartPulse,
-  Rss,
+  MapPinned,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -184,13 +184,13 @@ export default function Footer() {
 
           <ul className="space-y-2 text-sm">
             <li className="flex items-center gap-3">
+              <MapPinned size={16} /> Banyuwangi, Jawa Timur
+            </li>
+            <li className="flex items-center gap-3">
               <Mail size={17} /> sonknime@gmail.com
             </li>
             <li className="flex items-center gap-3">
               <Phone size={16} /> +62 831 2522 1273
-            </li>
-            <li className="flex items-center gap-3">
-              <Rss size={16} /> www.nekosonk.com
             </li>
           </ul>
         </div>

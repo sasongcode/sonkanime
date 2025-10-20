@@ -15,6 +15,7 @@ export default function Favorites() {
   } | null>(null);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
+  
   // Scroll otomatis ke atas setiap kali ganti halaman
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });

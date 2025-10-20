@@ -34,8 +34,8 @@ export default function Contact() {
 
       {/* Header */}
       <div className="text-center mb-16">
-        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-br from-green-300 to-emerald-700 bg-clip-text text-transparent text-center mb-2">
-          Contact Kami
+        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-br from-green-300 to-emerald-700 bg-clip-text text-transparent py-1 text-center mb-2">
+          Hubungi Kami
         </h1>
         <div className="w-28 h-1 bg-yellow-400/80 mx-auto rounded-full shadow-lg shadow-green-500/40 mb-3"></div>
 
@@ -76,9 +76,7 @@ export default function Contact() {
         ))}
       </div>
 
-      {/* Dua Kolom */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-        {/* Kiri - Sosial Media */}
         <div className="flex flex-col w-full">
           <h2 className="text-2xl font-bold bg-gradient-to-br from-green-400 to-emerald-600 bg-clip-text text-transparent mb-6 flex items-center gap-2">
             <Share2
@@ -88,13 +86,12 @@ export default function Contact() {
             Sosial Media Kami
           </h2>
 
-          {/* Card Sosial Media mirip Home */}
+          {/* Card Sosial Media */}
           <div className="flex flex-col gap-4 w-full">
             {socialMediaLinks.map((s, index) => (
               <a
                 key={index}
                 href={s.link}
-                target="_blank"
                 rel="noopener noreferrer"
                 className={`group relative flex items-center justify-between gap-4 bg-zinc-800/70 rounded-xl overflow-hidden group hover:shadow-2xl hover:scale-[1.01] transition border border-transparent ${s.hover}`}
               >
@@ -174,7 +171,7 @@ export default function Contact() {
             </div>
             <button
               type="submit"
-              className="w-full py-3 bg-gradient-to-br from-green-400 to-emerald-600 hover:from-green-500 hover:to-emerald-700 rounded-lg font-semibold text-white hover:opacity-90 transition transform hover:scale-[0.98] shadow-lg"
+              className="w-full py-3 bg-gradient-to-br from-green-500 to-emerald-700 hover:from-green-600 hover:to-emerald-700 rounded-lg font-semibold text-white hover:opacity-90 transition transform hover:scale-[0.98] shadow-lg"
             >
               Kirim Pesan
             </button>

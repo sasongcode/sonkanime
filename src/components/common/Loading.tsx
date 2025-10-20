@@ -4,10 +4,9 @@ export default function Loading() {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    // Efek transisi keluar setelah sedikit waktu (simulasi halaman siap)
     const timer = setTimeout(() => {
       setFadeOut(true);
-    }, 800); // bisa disesuaikan, 800ms itu halus banget
+    }, 800);
     return () => clearTimeout(timer);
   }, []);
 

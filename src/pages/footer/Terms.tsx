@@ -22,7 +22,7 @@ export default function TermsOfService() {
         </p>
       </div>
 
-      {/* Content (List Style) */}
+      {/* Content */}
       <div className="space-y-5">
         {ToSData.map((item, idx) => (
           <div
@@ -31,7 +31,7 @@ export default function TermsOfService() {
                        rounded-xl p-5 shadow-md hover:shadow-lg hover:shadow-green-400/20
                        transition-all duration-300 ease-out hover:-translate-y-1"
           >
-            {/* Numbering */}
+            {/* Nomor */}
             <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg 
                             bg-gradient-to-br from-green-500 to-emerald-600 text-white font-semibold shadow-md group-hover:bg-green-500 transition">
               {idx + 1}

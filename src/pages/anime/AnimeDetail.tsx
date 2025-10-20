@@ -2,7 +2,7 @@ import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ArrowLeft, Heart } from "lucide-react";
 import Loading from "../../components/common/Loading";
-import Toast from "../../components/Toast"; // 🔹 tambahkan ini
+import Toast from "../../components/Toast";
 
 export default function AnimeDetail() {
   const { id } = useParams();
@@ -10,7 +10,7 @@ export default function AnimeDetail() {
   const [characters, setCharacters] = useState<any[]>([]);
   const [favorites, setFavorites] = useState<any[]>([]);
   const [isFavorite, setIsFavorite] = useState(false);
-  const [toast, setToast] = useState<{ message: string; type: "success" | "danger" } | null>(null); // ✅ untuk notifikasi
+  const [toast, setToast] = useState<{ message: string; type: "success" | "danger" } | null>(null); //  untuk notifikasi
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -18,13 +18,12 @@ export default function AnimeDetail() {
 
   const [loading, setLoading] = useState(true);
 
-  // 🔹 Ambil data favorit dari localStorage saat awal
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("favorites") || "[]");
     setFavorites(saved);
   }, []);
 
-  // 🔹 Cek apakah anime ini sudah difavoritkan
+  // Cek apakah anime sudah ada difavorit
   useEffect(() => {
     if (anime) {
       setIsFavorite(favorites.some((a) => a.mal_id === anime.mal_id));
@@ -50,7 +49,7 @@ export default function AnimeDetail() {
     return () => controller.abort();
   }, [id]);
 
-  // 🔹 Fungsi toggle favorit dengan notifikasi
+  // Fungsi toggle favorit dengan notifikasi
   const toggleFavorite = () => {
     if (!anime) return;
 
@@ -64,7 +63,7 @@ export default function AnimeDetail() {
     } else {
       updated = [...favorites, anime];
       setToast({
-        message: `✅ ${anime.title} ditambahkan ke Favorit!`,
+        message: ` ${anime.title} ditambahkan ke Favorit!`,
         type: "success",
       });
     }
@@ -73,13 +72,13 @@ export default function AnimeDetail() {
     localStorage.setItem("favorites", JSON.stringify(updated));
     setIsFavorite(!isFavorite);
 
-    // 🔹 Hilangkan toast setelah 2 detik
+    // Hilangkan toast setelah 2 detik
     setTimeout(() => setToast(null), 2000);
   };
 
   return (
     <div className="relative flex flex-col min-h-screen bg-gradient-to-b from-zinc-900 via-zinc-800 to-zinc-900 text-white overflow-hidden">
-      {/* ✅ Fullscreen Loading Overlay */}
+      {/* Fullscreen Loading Overlay */}
       <div
         className={`absolute inset-0 flex items-center justify-center bg-zinc-900 transition-opacity duration-700 z-50 ${
           loading ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
@@ -88,7 +87,7 @@ export default function AnimeDetail() {
         <Loading />
       </div>
 
-      {/* ✅ Komponen Toast (Notifikasi) */}
+      {/*  Komponen Toast (Notifikasi) */}
       {toast && (
         <Toast
           message={toast.message}
@@ -97,7 +96,7 @@ export default function AnimeDetail() {
         />
       )}
 
-      {/* ✅ Konten utama */}
+      {/*  Konten utama */}
       <div
         className={`flex-1 transition-opacity duration-700 ${
           loading ? "opacity-0" : "opacity-100"
@@ -116,7 +115,7 @@ export default function AnimeDetail() {
                 Kembali
               </button>
 
-              {/* 🔹 Tombol Favorit */}
+              {/*  Tombol Favorit */}
               <button
                 onClick={toggleFavorite}
                 className={`absolute top-4 right-6 flex items-center gap-2 px-4 py-1.5 rounded-lg font-semibold shadow transition-all duration-300 hover:scale-105 ${
@@ -255,7 +254,7 @@ export default function AnimeDetail() {
   );
 }
 
-// 🔹 Komponen Info kecil biar rapi
+//  Komponen Info kecil biar rapi
 function Info({ label, value }: { label: string; value: any }) {
   return (
     <div>

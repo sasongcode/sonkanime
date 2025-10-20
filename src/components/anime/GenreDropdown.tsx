@@ -1,4 +1,3 @@
-// src/components/anime/GenreDropdown.tsx
 import { ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -101,7 +100,7 @@ export default function GenreDropdown({
                     ${
                       isActive
                         ? "bg-green-600 text-white shadow-md"
-                        : "bg-zinc-800/60 text-gray-300 hover:bg-green-500 hover:text-white"
+                        : "bg-zinc-800/60 text-gray-300 hover:bg-green-600 hover:text-white"
                     }`}
                   >
                     {genre.name}

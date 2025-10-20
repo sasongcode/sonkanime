@@ -64,7 +64,7 @@ export default function Navbar() {
       {/* Mobile Menu Dropdown */}
       {isOpen && (
         <div
-          className="md:hidden font-semibold backdrop-blur-md shadow-lg px-4 pb-4 space-y-2 transition-all duration-300 bg-green-800"
+          className="md:hidden font-semibold backdrop-blur-md shadow-lg px-4 pb-4 space-y-2 transition-all duration-300 bg-green-900/5"
         >
           <NavLink
             to="/"

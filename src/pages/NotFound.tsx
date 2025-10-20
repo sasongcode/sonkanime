@@ -8,7 +8,6 @@ export default function NotFound() {
       {/* Icon */}
       <AlertCircle className="text-red-600 w-16 h-16 animate-bounce" />
 
-      {/* 404 dengan efek glow */}
       <h1 className="text-8xl md:text-9xl font-extrabold text-red-600 mb-6 relative underline underline-offset-7 decoration-red-500/80 decoration-4">
         404
       </h1>

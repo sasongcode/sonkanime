@@ -24,9 +24,8 @@ export default function Toast ({ message, type = "success", onClose }: ToastProp
   }, [onClose]);
 
   // Pilih warna berdasarkan type
-  let bgColor = "bg-green-600 text-white"; // default success
+  let bgColor = "bg-green-600 text-white";
   if (type === "danger") bgColor = "bg-red-500 text-white";
-  // if (type === "error") bgColor = "bg-red-500 text-white";
 
   return (
     <div

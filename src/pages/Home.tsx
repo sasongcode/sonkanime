@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
-  GalleryVerticalEnd,
   Play,
   Search,
   Star,
@@ -46,7 +45,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // ✅ Fetch anime top
+  // Fetch anime top
   useEffect(() => {
     const controller = new AbortController();
 
@@ -261,13 +260,9 @@ export default function Home() {
         {/* Popular Section */}
         <div className="px-6 md:px-18 py-5 bg-zinc-900 mb-20">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="ms-2 flex justify-center gap-2 text-xl md:text-2xl font-semibold text-white drop-shadow-lg">
-              <GalleryVerticalEnd
-                size={30}
-                className="bg-white text-black px-1.5 py-1 rounded-full"
-              />
-              Beberapa Anime Populer
-            </h2>
+            <h3 className="text-2xl font-bold mb-2 border-l-4 border-green-500 pl-3">
+          Anime Populer Lainnya
+        </h3>
             <Link
               to="/anime"
               className="flex justify-center gap-2 relative text-white hover:text-zinc-300/80 transition-colors after:content-[''] after:absolute after:left-0.5 after:-bottom-1 after:h-[2px] after:w-0 after:bg-yellow-400 after:transition-all after:duration-300 hover:after:w-full font-bold"

@@ -29,7 +29,7 @@ export default function UserGuide() {
     <div className="bg-zinc-900 mt-8 min-h-screen text-white px-6 md:px-20 py-16">
       {/* Header */}
       <div className="text-center mb-12">
-        <h1 className="text-3xl md:text-4xl mb-2 font-bold bg-gradient-to-br from-green-300 to-emerald-700 bg-clip-text text-transparent drop-shadow-lg">
+        <h1 className="text-3xl md:text-4xl mb-2 font-bold bg-gradient-to-br from-green-300 to-emerald-700 bg-clip-text text-transparent drop-shadow-lg py-1">
           Panduan Pengguna
         </h1>
         <div className="w-36 h-1 bg-yellow-400 mx-auto rounded-full mb-5"></div>

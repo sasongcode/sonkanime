@@ -9,19 +9,19 @@ export const contactCards = [
 export const socialMediaLinks = [
   {
     name: "GitHub",
-    link: "https://github.com/Marzoo21",
+    link: "#",
     icon: Github,
     hover: "group-hover:bg-zinc-600/60 px-2 rounded-full hover:border-white hover:shadow-white/30",
   },
   {
     name: "Instagram",
-    link: "https://instagram.com/abcdmrzo",
+    link: "#",
     icon: Instagram,
     hover: "group-hover:bg-pink-500 px-2 rounded-full hover:border-pink-500 hover:shadow-pink-500/30",
   },
   {
     name: "YouTube",
-    link: "https://youtube.com/@abcdmrzo",
+    link: "#",
     icon: Youtube,
     hover: "group-hover:bg-red-500 px-2 rounded-full hover:border-red-500 hover:shadow-red-500/30",
   },

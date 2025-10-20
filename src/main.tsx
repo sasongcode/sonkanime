@@ -15,6 +15,8 @@ import FAQ from "./pages/footer/Faq.tsx";
 import UserGuide from "./pages/footer/UserGuide.tsx";
 import BlogDetail from "./pages/footer/BlogDetail.tsx";
 import About from "./pages/footer/Profile.tsx";
+import MangaList from "./pages/manga/MangaList.tsx";
+import MangaDetail from "./pages/manga/MangaDetail.tsx";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +36,8 @@ const router = createBrowserRouter([
       { path: "privacy", element: <TermsOfService /> },
       { path: "blog", element: <Blog /> },
       { path: "blog/:id", element: <BlogDetail /> },
+      { path: "manga", element: <MangaList /> },
+      { path: "manga/:id", element: <MangaDetail />},
       { path: "userguide", element: <UserGuide /> },
       { path: "profile", element: <About /> },
     ],

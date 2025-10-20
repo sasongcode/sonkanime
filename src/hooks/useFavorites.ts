@@ -1,10 +1,8 @@
-// src/hooks/useFavorites.ts
 import { useState, useEffect } from "react";
 
 export function useFavorites() {
   const [favorites, setFavorites] = useState<any[]>([]);
 
-  // load dari localStorage saat pertama kali
   useEffect(() => {
     const stored = localStorage.getItem("favorites");
     if (stored) {

@@ -42,7 +42,7 @@ export default function AnimeList() {
 
   const [search, setSearch] = useState(query);
 
-  // ✅ Helper untuk update params
+  // Helper untuk update params
   const updateParams = (newParams: Record<string, string>) => {
     setSearchParams({
       page: "1",
@@ -51,7 +51,7 @@ export default function AnimeList() {
     });
   };
 
-  // ✅ Fetch daftar anime
+  // Fetch daftar anime
   useEffect(() => {
     setLoading(true);
     setError(null);
@@ -87,7 +87,7 @@ export default function AnimeList() {
     };
   }, [page, query, selectedGenre]);
 
-  // ✅ Fetch daftar genre
+  // Fetch daftar genre
   useEffect(() => {
     fetch("https://api.jikan.moe/v4/genres/anime")
       .then((res) => res.json())
@@ -95,13 +95,13 @@ export default function AnimeList() {
       .catch(() => setGenres([]));
   }, []);
 
-  // ✅ Ambil favorit dari localStorage
+  // Ambil favorit dari localStorage
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("favorites") || "[]");
     setFavorites(stored);
   }, []);
 
-  // ✅ Toggle favorit
+  // Toggle favorit
   const toggleFavorite = (item: Anime) => {
     const exists = favorites.some((fav) => fav.mal_id === item.mal_id);
     let updated: Anime[];
@@ -125,7 +125,7 @@ export default function AnimeList() {
     setTimeout(() => setToast(null), 2000);
   };
 
-  // ✅ Jika error tampilkan full screen error
+  // Jika error tampilkan full screen error
   if (error)
     return (
       <FetchError message={error} onRetry={() => window.location.reload()} />
@@ -133,7 +133,7 @@ export default function AnimeList() {
 
   return (
     <div className="relative flex flex-col min-h-screen bg-zinc-900 text-white overflow-hidden">
-      {/* ✅ Full screen loading overlay */}
+      {/* Full screen loading overlay */}
       <div
         className={`absolute inset-0 flex items-center justify-center bg-zinc-900 transition-opacity duration-700 z-50 ${
           loading ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
@@ -142,7 +142,7 @@ export default function AnimeList() {
         <Loading />
       </div>
 
-      {/* ✅ Konten utama */}
+      {/* Konten utama */}
       <div
         className={`flex-1 transition-opacity duration-700 ${
           loading ? "opacity-0" : "opacity-100"
@@ -197,7 +197,7 @@ export default function AnimeList() {
             />
           </div>
 
-          {/* ✅ Grid daftar anime */}
+          {/* Grid daftar anime */}
           {anime.length === 0 ? (
             <p className="text-center text-gray-400">Anime tidak ditemukan.</p>
           ) : (
@@ -220,7 +220,7 @@ export default function AnimeList() {
             </div>
           )}
 
-          {/* ✅ Pagination */}
+          {/* Pagination */}
           <Pagination
             page={page}
             hasNextPage={hasNextPage}
