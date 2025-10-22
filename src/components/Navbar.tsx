@@ -23,7 +23,7 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 shadow-md ${
-        isScrolled ? "bg-green-800/50 backdrop-blur-md" : "bg-green-800"
+        isScrolled ? "bg-green-800/5 sm:bg-green-800/50 backdrop-blur-md" : "bg-green-800"
       } text-white`}
     >
       <div className="ms-6 flex justify-between items-center p-3">
