@@ -10,7 +10,10 @@ export default function AnimeDetail() {
   const [characters, setCharacters] = useState<any[]>([]);
   const [favorites, setFavorites] = useState<any[]>([]);
   const [isFavorite, setIsFavorite] = useState(false);
-  const [toast, setToast] = useState<{ message: string; type: "success" | "danger" } | null>(null); //  untuk notifikasi
+  const [toast, setToast] = useState<{
+    message: string;
+    type: "success" | "danger";
+  } | null>(null); //  untuk notifikasi
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -35,12 +38,16 @@ export default function AnimeDetail() {
     const controller = new AbortController();
 
     Promise.all([
-      fetch(`https://api.jikan.moe/v4/anime/${id}`, { signal: controller.signal })
+      fetch(`https://api.jikan.moe/v4/anime/${id}`, {
+        signal: controller.signal,
+      })
         .then((res) => res.json())
         .then((data) => setAnime(data.data))
         .catch(() => setAnime(null)),
 
-      fetch(`https://api.jikan.moe/v4/anime/${id}/characters`, { signal: controller.signal })
+      fetch(`https://api.jikan.moe/v4/anime/${id}/characters`, {
+        signal: controller.signal,
+      })
         .then((res) => res.json())
         .then((data) => setCharacters(data.data || []))
         .catch(() => setCharacters([])),
@@ -81,7 +88,9 @@ export default function AnimeDetail() {
       {/* Fullscreen Loading Overlay */}
       <div
         className={`absolute inset-0 flex items-center justify-center bg-zinc-900 transition-opacity duration-700 z-50 ${
-          loading ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          loading
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
         }`}
       >
         <Loading />
@@ -106,39 +115,45 @@ export default function AnimeDetail() {
           <div className="max-w-6xl mx-auto px-4 py-20">
             {/* Header Card */}
             <div className="flex flex-col md:flex-row gap-8 bg-zinc-800/80 backdrop-blur-md rounded-xl p-6 mt-4 shadow-lg relative">
-              {/* Tombol Kembali */}
-              <button
-                onClick={() => (from ? navigate(from) : navigate(-1))}
-                className="absolute top-4 left-6 inline-flex items-center gap-2 px-4 py-1.5 bg-gradient-to-br from-green-400 to-emerald-600 hover:from-green-500 hover:to-emerald-700 text-white text-sm rounded-lg font-semibold shadow hover:scale-[0.98] transition"
-              >
-                <ArrowLeft size={16} />
-                Kembali
-              </button>
+              <div className="flex justify-between items-center md:mb-0 md:absolute md:top-4 md:left-6 md:right-6 z-10">
+                {/* Tombol Kembali */}
+                <button
+                  onClick={() => (from ? navigate(from) : navigate(-1))}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-br from-green-400 to-emerald-600 hover:from-green-500 hover:to-emerald-700 text-white text-sm rounded-lg font-semibold shadow hover:scale-[0.98] active:scale-95 transition-transform duration-150"
+                >
+                  <ArrowLeft size={16} />
+                  Kembali
+                </button>
 
-              {/*  Tombol Favorit */}
-              <button
-                onClick={toggleFavorite}
-                className={`absolute top-4 right-6 flex items-center gap-2 px-4 py-1.5 rounded-lg font-semibold shadow transition-all duration-300 hover:scale-105 ${
-                  isFavorite
-                    ? "bg-pink-600 hover:bg-pink-700 text-white"
-                    : "bg-zinc-600 hover:bg-pink-500 text-white"
-                }`}
-              >
-                <Heart
-                  size={18}
-                  className={`transition-transform duration-300 ${
-                    isFavorite ? "fill-current scale-110" : "text-white"
+                {/* Tombol Favorit */}
+                <button
+                  onClick={toggleFavorite}
+                  className={`flex items-center gap-2 px-3 py-2 rounded-lg font-semibold shadow transition-all duration-300 active:scale-95 ${
+                    isFavorite
+                      ? "bg-pink-600 hover:bg-pink-700 text-white"
+                      : "bg-zinc-600 hover:bg-pink-500 text-white"
                   }`}
-                />
-                {isFavorite ? "Hapus dari Favorit" : "Tambah Favorit"}
-              </button>
+                >
+                  <Heart
+                    size={18}
+                    className={`transition-all duration-300 ${
+                      isFavorite
+                        ? "fill-current text-white scale-110 animate-pulse"
+                        : "text-white opacity-80"
+                    }`}
+                  />
+                  <span className="text-sm font-medium">
+                    {isFavorite ? "Hapus dari Favorit" : "Tambah Favorit"}
+                  </span>
+                </button>
+              </div>
 
               {/* Poster */}
               <div className="flex-shrink-0">
                 <img
                   src={anime.images.jpg.large_image_url}
                   alt={anime.title}
-                  className="mt-10 w-full md:w-64 lg:w-72 rounded-xl shadow-lg transition-transform duration-300"
+                  className="md:mt-12 w-full md:w-64 lg:w-72 rounded-xl shadow-lg transition-transform duration-300"
                 />
               </div>
 
@@ -149,7 +164,9 @@ export default function AnimeDetail() {
                     {anime.title}
                   </h1>
                   {anime.title_japanese && (
-                    <p className="text-gray-400 italic mb-4">{anime.title_japanese}</p>
+                    <p className="text-gray-400 italic mb-4">
+                      {anime.title_japanese}
+                    </p>
                   )}
 
                   {/* Genre */}
@@ -183,9 +200,13 @@ export default function AnimeDetail() {
                   {/* Producers */}
                   {anime.producers?.length > 0 && (
                     <p className="text-sm mb-2">
-                      <span className="font-semibold text-lg text-green-500">Producers: </span>
+                      <span className="font-semibold text-lg text-green-500">
+                        Producers:{" "}
+                      </span>
                       <span className="text-gray-300 font-semibold">
-                        {anime.producers.map((prod: any) => prod.name).join(", ")}
+                        {anime.producers
+                          .map((prod: any) => prod.name)
+                          .join(", ")}
                       </span>
                     </p>
                   )}
@@ -195,7 +216,9 @@ export default function AnimeDetail() {
 
             {/* Synopsis */}
             <div className="mt-10 bg-zinc-800/80 backdrop-blur-md rounded-xl p-6 shadow-lg relative">
-              <h2 className="text-2xl font-semibold mb-3 text-green-500">Synopsis</h2>
+              <h2 className="text-2xl font-semibold mb-3 text-green-500">
+                Synopsis
+              </h2>
               <p className="text-gray-300 leading-relaxed">
                 {anime.synopsis || "No synopsis available."}
               </p>
@@ -219,11 +242,14 @@ export default function AnimeDetail() {
                         className="w-16 h-20 object-cover rounded-lg"
                       />
                       <div className="flex-1">
-                        <p className="font-semibold text-yellow-300">{c.character.name}</p>
+                        <p className="font-semibold text-yellow-300">
+                          {c.character.name}
+                        </p>
                         <p className="text-sm text-gray-300">{c.role}</p>
                         {c.voice_actors?.[0] && (
                           <p className="text-xs mt-1 text-green-400">
-                            🎤 {c.voice_actors[0].person.name} ({c.voice_actors[0].language})
+                            🎤 {c.voice_actors[0].person.name} (
+                            {c.voice_actors[0].language})
                           </p>
                         )}
                       </div>
@@ -236,7 +262,9 @@ export default function AnimeDetail() {
             {/* Trailer */}
             {anime.trailer?.embed_url && (
               <div className="mt-10 bg-zinc-800/90 backdrop-blur-md p-6 rounded-xl shadow">
-                <h2 className="text-2xl font-semibold mb-5 text-green-500">Trailer</h2>
+                <h2 className="text-2xl font-semibold mb-5 text-green-500">
+                  Trailer
+                </h2>
                 <div className="relative w-full pb-[56.25%] h-0">
                   <iframe
                     src={anime.trailer.embed_url}
