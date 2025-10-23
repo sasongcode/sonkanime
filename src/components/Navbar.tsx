@@ -20,11 +20,15 @@ export default function Navbar() {
       isActive ? "text-amber-300 font-bold" : ""
     }`;
 
+  const navbarBg = isScrolled
+    ? "bg-green-800/5 sm:bg-green-800/50 backdrop-blur-md"
+    : isOpen
+    ? "bg-green-800/5 backdrop-blur-md"
+    : "bg-green-800";
+
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 shadow-md ${
-        isScrolled ? "bg-green-800/5 sm:bg-green-800/50 backdrop-blur-md" : "bg-green-800"
-      } text-white`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out shadow-md ${navbarBg} text-white`}
     >
       <div className="ms-6 flex justify-between items-center p-3">
         {/* Logo Brand */}
@@ -44,6 +48,9 @@ export default function Navbar() {
           <NavLink to="/anime" className={linkClass}>
             Anime
           </NavLink>
+          <NavLink to="/season" className={linkClass}>
+            Season
+          </NavLink>
           <NavLink to="/favorites" className={linkClass}>
             Favorite
           </NavLink>
@@ -52,7 +59,7 @@ export default function Navbar() {
           </NavLink>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Toggle Button */}
         <button
           className="md:hidden text-white focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
@@ -61,7 +68,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Navigasi Mobile */}
       {isOpen && (
         <div
           className="md:hidden font-semibold backdrop-blur-md shadow-lg px-4 pb-4 space-y-2 transition-all duration-300 bg-green-900/5"
@@ -82,6 +89,13 @@ export default function Navbar() {
             Anime
           </NavLink>
           <NavLink
+            to="/season"
+            className={linkClass}
+            onClick={() => setIsOpen(false)}
+          >
+            Season
+          </NavLink>
+          <NavLink
             to="/favorites"
             className={linkClass}
             onClick={() => setIsOpen(false)}
@@ -99,4 +113,4 @@ export default function Navbar() {
       )}
     </nav>
   );
-};
+}
