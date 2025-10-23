@@ -15,6 +15,7 @@ import FAQ from "./pages/footer/Faq.tsx";
 import UserGuide from "./pages/footer/UserGuide.tsx";
 import BlogDetail from "./pages/footer/blog/BlogDetail.tsx";
 import About from "./pages/footer/Profile.tsx";
+import SeasonPage from "./pages/SeasonPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
       { path: "blog/:id", element: <BlogDetail /> },
       { path: "userguide", element: <UserGuide /> },
       { path: "profile", element: <About /> },
+      { path: "season", element: <SeasonPage /> },
     ],
   },
 ]);
