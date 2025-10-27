@@ -150,12 +150,6 @@ export default function Home() {
                         Lihat Detail
                         <ArrowRight size={16} className="inline-block ms-2 mb-1" />
                       </Link>
-                      {/* <Link
-                        to={`/anime/${item.mal_id}`}
-                        className="px-6 py-3 bg-gradient-to-br from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 transition rounded-lg font-semibold text-white shadow-md w-fit"
-                      >
-                        See Detail
-                      </Link> */}
                     </motion.div>
                   </div>
                 </div>
