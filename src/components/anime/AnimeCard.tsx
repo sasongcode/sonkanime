@@ -26,7 +26,7 @@ interface Props {
 
 export default function AnimeCard({ item, page, query, isFavorite = false, onToggleFavorite }: Props) {
   return (
-    <div className="group flex flex-col bg-zinc-900 rounded-lg overflow-hidden shadow-sm hover:shadow-green-500/20 transition-transform duration-300 hover:-translate-y-1 w-full h-full">
+    <div className="group flex flex-col bg-zinc-900 rounded-lg overflow-hidden transition-transform duration-300 hover:-translate-y-1 w-full h-full">
       <div className="relative aspect-[2/3] bg-zinc-800 overflow-hidden">
         <Link to={`/anime/${item.mal_id}?page=${page || 1}&q=${query || ""}`} className="block w-full h-full">
           <img
