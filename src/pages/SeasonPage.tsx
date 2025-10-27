@@ -77,7 +77,7 @@ export default function SeasonPage() {
     return <FetchError message={error} onRetry={() => window.location.reload()} />;
 
   return (
-    <div className="min-h-screen bg-zinc-900 text-white px-6 md:px-16 py-10 mt-14">
+    <div className="min-h-screen bg-zinc-900 text-white px-6 md:px-16 py-9 mt-14">
       {/* Header */}
       <div className="text-center mb-5">
         <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-br from-green-300 to-emerald-700 bg-clip-text text-transparent py-1">
