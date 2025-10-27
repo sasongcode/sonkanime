@@ -10,6 +10,30 @@ import {
 } from "lucide-react";
 import { skills } from "../../data/Skills";
 
+function Social({
+  href,
+  gradient,
+  icon,
+  label,
+}: {
+  href: string;
+  gradient: string;
+  icon: React.ReactNode;
+  label: string;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-br ${gradient} hover:scale-105 hover:brightness-110 transition-all duration-300`}
+    >
+      {icon}
+      <span>{label}</span>
+    </a>
+  );
+}
+
 export default function Profile() {
   return (
     <section className="min-h-screen bg-zinc-900 text-white px-6 md:px-20 py-28 overflow-hidden">
@@ -186,29 +210,5 @@ function Info({ icon, text }: { icon: React.ReactNode; text: string }) {
       {icon}
       <p>{text}</p>
     </div>
-  );
-}
-
-function Social({
-  href,
-  gradient,
-  icon,
-  label,
-}: {
-  href: string;
-  gradient: string;
-  icon: React.ReactNode;
-  label: string;
-}) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-br ${gradient} hover:scale-95 hover:brightness-110 transition-all duration-300`}
-    >
-      {icon}
-      <span>{label}</span>
-    </a>
   );
 }

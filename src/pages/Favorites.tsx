@@ -15,7 +15,6 @@ export default function Favorites() {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
 
-  // Scroll otomatis ke atas setiap kali ganti halaman
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [page]);
@@ -31,15 +30,12 @@ export default function Favorites() {
     setTimeout(() => setToast(null), 2000);
   };
 
-  // Filter berdasarkan pencarian
   const filteredFavorites = favorites.filter((anime) =>
     anime.title.toLowerCase().includes(search.toLowerCase())
   );
 
-  // Hitung total halaman
   const totalPages = Math.ceil(filteredFavorites.length / ITEMS_PER_PAGE);
 
-  // Ambil anime sesuai halaman aktif
   const startIndex = (page - 1) * ITEMS_PER_PAGE;
   const currentFavorites = filteredFavorites.slice(
     startIndex,

@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  ArrowRight,
-  Play,
-  Search,
-  Star,
-  Trophy,
-} from "lucide-react";
+import { ArrowRight, Play, Search, Star, Trophy } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
@@ -134,7 +128,7 @@ export default function Home() {
                     </motion.p>
 
                     <motion.div
-                      className="flex gap-6 mb-6 text-sm md:text-base text-gray-300"
+                      className="flex gap-6 mb-8 text-sm md:text-base text-gray-300"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8, delay: 0.3 }}
@@ -151,10 +145,17 @@ export default function Home() {
                     >
                       <Link
                         to={`/anime/${item.mal_id}`}
-                        className="px-6 py-3 bg-gradient-to-br from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 transition rounded-lg font-semibold text-white shadow-md w-fit"
+                        className="bg-green-600 text-white font-semibold px-5 py-3 rounded-full hover:bg-yellow-400 hover:text-black transition hover:duration-700 duration-600"
                       >
                         Lihat Detail
+                        <ArrowRight size={16} className="inline-block ms-2 mb-1" />
                       </Link>
+                      {/* <Link
+                        to={`/anime/${item.mal_id}`}
+                        className="px-6 py-3 bg-gradient-to-br from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 transition rounded-lg font-semibold text-white shadow-md w-fit"
+                      >
+                        See Detail
+                      </Link> */}
                     </motion.div>
                   </div>
                 </div>
@@ -213,13 +214,13 @@ export default function Home() {
 
             <div className="flex flex-col gap-4">
               {anime
-                .filter((a) => a.score && a.score >= 8.5)
+                .filter((a) => a.score && a.score >= 9.0) // anime dengan score >= 9.0
                 .slice(0, 12)
                 .map((item, index) => (
                   <Link
                     to={`/anime/${item.mal_id}`}
                     key={item.mal_id}
-                    className="relative flex items-center justify-between gap-4 bg-zinc-800/70 hover:bg-zinc-700/40 rounded-xl overflow-hidden group hover:shadow-2xl hover:scale-[1.01] transition"
+                    className="sm:mx-5 relative flex items-center justify-between gap-4 bg-zinc-800/70 hover:bg-zinc-700/40 rounded-xl overflow-hidden group hover:shadow-2xl hover:scale-[1.01] transition"
                   >
                     <div className="ms-5 w-7 h-7 flex-shrink-0 flex justify-center font-semibold text-white rounded-full border group-hover:bg-white group-hover:border-white group-hover:text-black transition">
                       {index + 1}
@@ -246,9 +247,9 @@ export default function Home() {
                       <img
                         src={item.images.jpg.image_url}
                         alt={item.title}
-                        className="w-full h-full object-cover rounded-xl transition-transform duration-300 group-hover:scale-[1.15] opacity-90"
+                        className="hidden sm:block w-full h-full object-cover rounded-xl transition-transform duration-300 group-hover:scale-[1.15] opacity-90"
                       />
-                      <div className="absolute inset-0 bg-black/30 rounded-xl"></div>
+                      <div className="absolute inset-0 sm:bg-black/30 rounded-xl"></div>
                     </div>
                   </Link>
                 ))}
@@ -257,11 +258,11 @@ export default function Home() {
         </div>
 
         {/* Popular Section */}
-        <div className="px-6 md:px-18 py-5 bg-zinc-900 mb-20">
+        <div className="px-6 md:px-18 py-2 bg-zinc-900 mb-20">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-2xl font-bold mb-2 border-l-4 border-green-500 pl-3">
-          Anime Populer Lainnya
-        </h3>
+              Anime Populer Lainnya
+            </h3>
             <Link
               to="/anime"
               className="flex justify-center gap-2 relative text-white hover:text-zinc-300/80 transition-colors after:content-[''] after:absolute after:left-0.5 after:-bottom-1 after:h-[2px] after:w-0 after:bg-yellow-400 after:transition-all after:duration-300 hover:after:w-full font-bold"
@@ -272,9 +273,12 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {anime.slice(5, 17).map((item) => (
-              <HomeCard key={item.mal_id} item={item} />
-            ))}
+            {anime
+              .filter((a) => a.score && a.score < 9.0) // anime dengan score < 9.0
+              .slice(0, 12)
+              .map((item) => (
+                <HomeCard key={item.mal_id} item={item} />
+              ))}
           </div>
         </div>
 
@@ -297,7 +301,7 @@ export default function Home() {
             </p>
             <Link
               to="/anime"
-              className="inline-flex items-center gap-2 w-auto px-5 py-3 text-xs md:text-sm font-medium border border-white text-white rounded-full shadow hover:bg-white hover:text-black hover:scale-[0.98] transition"
+              className="inline-flex items-center gap-2 w-auto px-5 py-3 text-xs md:text-sm font-medium border border-white text-white rounded-full shadow hover:bg-white hover:text-black hover:scale-[0.98] transition duration-500 hover:duration-500"
             >
               <Search size={16} />
               Lihat Daftar Anime

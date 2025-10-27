@@ -4,9 +4,9 @@ import { useSearchParams } from "react-router-dom";
 import AnimeCard from "../../components/anime/AnimeCard";
 import GenreDropdown from "../../components/anime/GenreDropdown";
 import Pagination from "../../components/common/Pagination";
-import Loading from "../../components/common/Loading";
 import FetchError from "../../components/common/ErrorFetch";
 import Toast from "../../components/Toast";
+import ShimmerCard from "../../components/common/ShimmerCard";
 
 interface Genre {
   mal_id: number;
@@ -41,7 +41,6 @@ export default function AnimeList() {
 
   const [search, setSearch] = useState(query);
 
-  // Helper untuk update params
   const updateParams = (newParams: Record<string, string>) => {
     setSearchParams({
       page: "1",
@@ -50,7 +49,7 @@ export default function AnimeList() {
     });
   };
 
-  // Fetch daftar anime
+  // Fetch anime
   useEffect(() => {
     setLoading(true);
     setError(null);
@@ -86,7 +85,7 @@ export default function AnimeList() {
     };
   }, [page, query, selectedGenre]);
 
-  // Fetch daftar genre
+  // Fetch genre
   useEffect(() => {
     fetch("https://api.jikan.moe/v4/genres/anime")
       .then((res) => res.json())
@@ -94,13 +93,11 @@ export default function AnimeList() {
       .catch(() => setGenres([]));
   }, []);
 
-  // Ambil favorit dari localStorage
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("favorites") || "[]");
     setFavorites(stored);
   }, []);
 
-  // Toggle favorit
   const toggleFavorite = (item: Anime) => {
     const exists = favorites.some((fav) => fav.mal_id === item.mal_id);
     let updated: Anime[];
@@ -117,14 +114,11 @@ export default function AnimeList() {
         type: "success",
       });
     }
-
     setFavorites(updated);
     localStorage.setItem("favorites", JSON.stringify(updated));
-
     setTimeout(() => setToast(null), 2000);
   };
 
-  // Jika error tampilkan full screen error
   if (error)
     return (
       <FetchError message={error} onRetry={() => window.location.reload()} />
@@ -132,21 +126,7 @@ export default function AnimeList() {
 
   return (
     <div className="relative flex flex-col min-h-screen bg-zinc-900 text-white overflow-hidden">
-      {/* Full screen loading overlay */}
-      <div
-        className={`absolute inset-0 flex items-center justify-center bg-zinc-900 transition-opacity duration-700 z-50 ${
-          loading ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
-      >
-        <Loading />
-      </div>
-
-      {/* Konten utama */}
-      <div
-        className={`flex-1 transition-opacity duration-700 ${
-          loading ? "opacity-0" : "opacity-100"
-        }`}
-      >
+      <div className="flex-1">
         {toast && (
           <Toast
             message={toast.message}
@@ -161,9 +141,8 @@ export default function AnimeList() {
           </h1>
           <div className="w-24 h-1 bg-yellow-400/80 mx-auto rounded-full shadow-lg shadow-green-500/40 mb-6"></div>
 
-          {/* Search + Genre Dropdown */}
+          {/* Search & Genre */}
           <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-10">
-            {/* Search */}
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -185,7 +164,6 @@ export default function AnimeList() {
               </div>
             </form>
 
-            {/* Genre Dropdown */}
             <GenreDropdown
               genres={genres}
               selectedGenre={selectedGenre}
@@ -196,42 +174,46 @@ export default function AnimeList() {
             />
           </div>
 
-          {/* Grid daftar anime */}
-          {anime.length === 0 ? (
+          {loading ? (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 auto-rows-fr items-stretch">
+              {Array.from({ length: 12 }).map((_, i) => (
+                <ShimmerCard key={i} />
+              ))}
+            </div>
+          ) : anime.length === 0 ? (
             <p className="text-center text-gray-400">Anime tidak ditemukan.</p>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3 md:gap-5">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 auto-rows-fr items-stretch">
               {anime.map((item) => {
                 const isFavorite = favorites.some(
                   (fav) => fav.mal_id === item.mal_id
                 );
                 return (
-                  <AnimeCard
-                    key={item.mal_id}
-                    item={item}
-                    page={page}
-                    query={query}
-                    isFavorite={isFavorite}
-                    onToggleFavorite={toggleFavorite}
-                  />
+                  <div key={item.mal_id} className="h-full flex">
+                    <AnimeCard
+                      item={item}
+                      page={page}
+                      query={query}
+                      isFavorite={isFavorite}
+                      onToggleFavorite={toggleFavorite}
+                    />
+                  </div>
                 );
               })}
             </div>
           )}
 
-          {/* Pagination */}
           <Pagination
             page={page}
             hasNextPage={hasNextPage}
-            onPageChange={(newPage) => {
+            onPageChange={(newPage) =>
               setSearchParams({
                 page: String(newPage),
                 q: query,
                 genre: selectedGenre?.toString() || "",
-              });
-            }}
+              })
+            }
           />
-
         </div>
       </div>
     </div>

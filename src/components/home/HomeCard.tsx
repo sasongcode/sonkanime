@@ -48,7 +48,7 @@ export default function HomeCard({ item }: Props) {
         {/* Info bar */}
         <div className="flex items-center justify-between text-xs text-gray-400 mt-auto pt-2">
           {/* Score & Episodes */}
-          <div className="flex items-center gap-1 text-[10px]">
+          <div className="flex items-center gap-1 text-[7px] sm:text-[10px]">
             <div className="bg-yellow-200/20 px-0.5 py-0.5 rounded-md flex items-center gap-1 border border-yellow-300">
               <Star size={13} className="text-yellow-300" />
               <span className="text-yellow-300 me-0.5 font-semibold">
@@ -63,7 +63,7 @@ export default function HomeCard({ item }: Props) {
 
           {/* Type */}
           <div className="flex items-center gap-2">
-            <span className="text-white font-semibold">
+            <span className="text-white font-semibold text-[10px] sm:text-[12px]">
               {item.type || "-"}
             </span>
           </div>
@@ -72,7 +72,7 @@ export default function HomeCard({ item }: Props) {
         {/* Genre (hanya 1) */}
         {item.genres && item.genres.length > 0 && (
           <span className="mt-2 py-1 text-center text-[10px] rounded-full text-white font-bold transition inline-block">
-            <span className="text-amber-600 uppercase text-[12px]">{item.genres[0].name}</span>
+            <span className="text-amber-600 uppercase text-[10px] sm:text-xs">{item.genres[0].name}</span>
           </span>
         )}
       </div>
